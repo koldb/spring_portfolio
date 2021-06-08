@@ -12,6 +12,11 @@
 
 <h2>테스트1 23:04</h2>
 
+<h2>다른 깃헙 아디로 로그인 후 임포트함
+23:41 push 시도</h2>
+23:44 재시도
+
+
 
 <P>  The time on the server is ${serverTime}. </P>
 </body>
