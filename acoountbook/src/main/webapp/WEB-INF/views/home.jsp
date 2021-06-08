@@ -16,7 +16,7 @@
 23:41 push 시도</h2>
 23:44 재시도
 
-
+<h1>본 아디로 다시 업로드</h1>
 
 <P>  The time on the server is ${serverTime}. </P>
 </body>
