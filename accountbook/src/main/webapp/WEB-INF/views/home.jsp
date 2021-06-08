@@ -11,16 +11,16 @@
 </h1>
 
 <h2>Github</h2>
-<h2>Github</h2>
-<h2>Github</h2>
-<h2>Github</h2>
-<h2>Github</h2>
+
 
 
 
 <P>  The time on the server is ${serverTime}. </P>
 <p>깃헙 테스트 업로드 되는지</p>
 <p>재설정 다시</p>
+
+
+<h2>깃헙 공유 해보기</h2>
 
 
 </body>
