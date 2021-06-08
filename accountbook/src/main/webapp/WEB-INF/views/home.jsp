@@ -20,7 +20,11 @@
 <p>재설정 다시</p>
 
 
+<<<<<<< HEAD
 <h2>깃헙 공유 해보기</h2>
+=======
+<p>다른 워크스테이션에서 로드 업로드 시도</p>
+>>>>>>> branch 'main' of https://github.com/koldb/spring_portfolio.git
 
 
 </body>
