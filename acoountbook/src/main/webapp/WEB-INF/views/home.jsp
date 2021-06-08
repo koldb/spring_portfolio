@@ -26,7 +26,8 @@
 <h1> 다른 아디 업로드 방식이 이상함 계속 시도중 24:14</h1>
 
 <h2>다른 아디로 접속하는 방법 찾음 시도 중</h2>
-
+<p>다른 아디로 받아와서 임포트 후 업로드하는 방법 완료
+https://kuzuro.blogspot.com/2018/04/github.html  참고 사이트  </p>
 
 <P>  The time on the server is ${serverTime}. </P>
 </body>
