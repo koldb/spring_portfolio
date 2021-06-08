@@ -14,7 +14,8 @@
 
 
 <P>  The time on the server is ${serverTime}. </P>
-<p>깃헙 테스트</p>
+<p>깃헙 테스트 업로드 되는지</p>
+
 
 
 </body>
