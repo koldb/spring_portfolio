@@ -23,6 +23,8 @@
 
 <h2>업로드 안된다</h2>
 
+<h1> 다른 아디 업로드 방식이 이상함 계속 시도중 24:14</h1>
+
 <P>  The time on the server is ${serverTime}. </P>
 </body>
 </html>
