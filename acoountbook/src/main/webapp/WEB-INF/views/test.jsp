@@ -26,6 +26,9 @@
 
 =======
 <h1>pull 하고 업로드해야한다</h1>
->>>>>>> branch 'main' of https://github.com/koldb/spring_portfolio.git
+
+<h1>원리를 모르겟다</h1>
+
+
 </body>
 </html>
