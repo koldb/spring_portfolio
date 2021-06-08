@@ -18,6 +18,11 @@
 
 <h1>본 아디로 다시 업로드</h1>
 
+<h2>pom프로퍼티 수정 완료 후 받았음 - 정상작동 확인 
+다른 아디로 업로드 재시도</h2>
+
+<h2>업로드 안된다</h2>
+
 <P>  The time on the server is ${serverTime}. </P>
 </body>
 </html>
