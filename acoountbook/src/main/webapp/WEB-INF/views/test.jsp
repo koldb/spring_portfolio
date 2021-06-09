@@ -10,7 +10,6 @@
 
 
 <h1>테스트</h1>
-<<<<<<< HEAD
 
 
 
@@ -35,10 +34,9 @@
 
 <<<<<<< HEAD
 <p>수정해서 업로드 주고받기를 해보자 pull을 먼저 땡긴다</p>
-=======
+
 <p>수정해서 업로드 주고받기 테스트</p>
 >>>>>>> branch 'main' of https://github.com/koldb/spring_portfolio.git
-
 
 <p>삭제 후 다시 받아보기 테스트 6/9 08:54</p>
 <p>커밋 보내기</p>
