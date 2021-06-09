@@ -44,12 +44,11 @@
 <p>커밋 보내기</p>
 <p>커밋 다시 보내기</p>
 
-<<<<<<< HEAD
 <h1>머지를 먼저 돌려보기</h1>
-=======
+
 <h1>머지 테스트</h1>
 
->>>>>>> branch 'main' of https://github.com/koldb/spring_portfolio.git
+<p>초대 후 변경</p>
 
 
 </body>
