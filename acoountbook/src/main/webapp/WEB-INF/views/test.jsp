@@ -55,8 +55,16 @@
 <p>메인 재 업뎃</p>
 <<<<<<< HEAD
 <p>이동복 브랜치에서 올리기</p>
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> refs/remotes/origin/main
 <p>초대 해제 후 보내보기</p>
+
+<<<<<<< HEAD
+>>>>>>> refs/remotes/origin/main
+=======
+<p> 메인 정리 </p>
 
 >>>>>>> refs/remotes/origin/main
 
