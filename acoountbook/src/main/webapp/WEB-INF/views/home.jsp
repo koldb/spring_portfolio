@@ -29,6 +29,9 @@
 <p>다른 아디로 받아와서 임포트 후 업로드하는 방법 완료
 https://kuzuro.blogspot.com/2018/04/github.html  참고 사이트  </p>
 
+
+asdasdasd
+
 <P>  The time on the server is ${serverTime}. </P>
 </body>
 </html>
