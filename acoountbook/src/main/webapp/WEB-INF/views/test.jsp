@@ -55,10 +55,10 @@
 <p>메인 재 업뎃</p>
 <<<<<<< HEAD
 <p>이동복 브랜치에서 올리기</p>
-=======
 <p>초대 해제 후 보내보기</p>
 
->>>>>>> branch 'main' of https://github.com/koldb/spring_portfolio.git
+<p> 메인 정리 </p>
+
 
 </body>
 </html>
