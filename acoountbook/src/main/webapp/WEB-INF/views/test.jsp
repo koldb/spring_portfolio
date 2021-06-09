@@ -34,7 +34,7 @@
 
 <<<<<<< HEAD
 <p>수정해서 업로드 주고받기를 해보자 pull을 먼저 땡긴다</p>
-=======
+
 <p>수정해서 업로드 주고받기 테스트</p>
 >>>>>>> branch 'main' of https://github.com/koldb/spring_portfolio.git
 
