@@ -30,7 +30,6 @@
 https://kuzuro.blogspot.com/2018/04/github.html  참고 사이트  </p>
 
 
-asdasdasd
 
 <P>  The time on the server is ${serverTime}. </P>
 </body>
