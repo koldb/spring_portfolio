@@ -4,6 +4,17 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="boardMapper">
    
+   <!-- 게시글 작성 -->
+   <insert id="insert">
+   insert into po_board(bno,
+   title,
+   content,
+   writer)
+   values(po_board_seq.nextval,
+   #{title},
+   #{content},
+   #{writer})
+   </insert>
    
    
 </mapper>

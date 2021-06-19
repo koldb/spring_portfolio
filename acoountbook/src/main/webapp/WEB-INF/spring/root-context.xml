@@ -10,14 +10,23 @@
 	<!-- Root Context: defines shared resources visible to all other web components -->
 
 
+<!-- 히카리 CP 빈 등록 -->
 	<bean id="hikariConfig" class="com.zaxxer.hikari.HikariConfig">
-		<property name="jdbcUrl"
-			value="jdbc:log4jdbc:oracle:thin:@localhost:1521:xe" />
 		<property name="driverClassName"
-			value="net.sf.log4jdbc.sql.jdbcapi.DriverSpy" />
-		<property name="username" value="scoot" />
-		<property name="password" value="tiger" />
-	</bean>
+			value="oracle.jdbc.driver.OracleDriver">
+		</property>
+		<property name="jdbcUrl"
+			value="jdbc:oracle:thin:@localhost:1521:XE"></property>
+			<property name="username" value="scott"></property>
+			<property name="password" value="tiger"></property>
+	</bean>	
+		
+	<!-- 히카리 CP 설정 -->
+	<bean id="dataSource" class="com.zaxxer.hikari.HikariDataSource"
+		destroy-method="close">
+		<constructor-arg ref="hikariConfig"/>
+		</bean>
+		
 
 	<!-- Mybatis 연동 -->
 	<bean id="sqlSessionFactory"
@@ -26,7 +35,7 @@
 		<property name="configLocation"
 			value="classpath:/mybatis-config.xml"></property>
 		<property name="mapperLocations"
-			value="classpath:mappers/**/*Mapper.xml" />
+			value="classpath:mappers/*Mapper.xml" />
 	</bean>
 	<bean id="sqlSession"
 		class="org.mybatis.spring.SqlSessionTemplate"
@@ -34,6 +43,12 @@
 		<constructor-arg name="sqlSessionFactory"
 			ref="sqlSessionFactory"></constructor-arg>
 	</bean>
+	
+
+   <!-- scan -->
+    <context:component-scan base-package="com.spring.service"></context:component-scan>
+    <context:component-scan base-package="com.spring.dao"></context:component-scan>
+    <context:component-scan base-package="com.spring.vo"></context:component-scan>
 
 
 </beans>
