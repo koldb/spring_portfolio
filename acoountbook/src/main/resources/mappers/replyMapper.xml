@@ -9,7 +9,7 @@
   	<!-- 댓글 조회 -->
   	<select  id="readReply" resultType="replyVO">
   	select 
-  	rno, content, writer, regdate
+  	rno, content, writer, regdate, editdate
   	from po_reply
   	where bno = #{bno}
   	</select>
@@ -28,5 +28,18 @@
   	#{writer})
   	</insert>
   
+  	<!-- 댓글 수정 -->
+  	<update id="updateRelpy" parameterType="replyVO">
+  	update po_reply set content = #{content}, editdate = sysdate
+  	where rno = #{rno}
+  	</update>
+  	
+  	<!-- 댓글 삭제 -->
+  	<delete id="deleteReply" parameterType="replyVO">
+  	delete from po_reply
+  	where rno = #{rno}
+  	</delete>
+  	
+  	
   
   </mapper>
