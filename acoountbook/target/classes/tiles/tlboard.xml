@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN" 
+"http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+<tiles-definitions>
+
+	<definition name="baseLayout"
+		template="/WEB-INF/views/common/layout.jsp">
+		<put-attribute name="title" value="게시판" />
+		<put-attribute name="header"
+			value="/WEB-INF/views/common/header.jsp" />
+		<put-attribute name="side"
+			value="/WEB-INF/views/common/side.jsp" />
+		<put-attribute name="body" value="" />
+		<put-attribute name="footer"
+			value="/WEB-INF/views/common/footer.jsp" />
+	</definition>
+
+
+
+	<definition name="board/list" extends="baseLayout">
+		<put-attribute name="title" value="게시글 리스트" />
+		<put-attribute name="body"
+			value="/WEB-INF/views/board/list.jsp" />
+	</definition> 
+	
+	<definition name="board/readView" extends="baseLayout">
+		<put-attribute name="title" value="게시글 조회" />
+		<put-attribute name="body"
+			value="/WEB-INF/views/board/readView.jsp" />
+	</definition>
+	
+	
+
+	<definition name="/board/writeView" extends="baseLayout">
+		<put-attribute name="title" value="게시글 작성 뷰" />
+		<put-attribute name="body"
+			value="/WEB-INF/views/board/writeView.jsp" />
+	</definition>
+
+</tiles-definitions>

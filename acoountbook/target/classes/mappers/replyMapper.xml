@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <mapper namespace="replyMapper">
+  
+  	<!-- 댓글 조회 -->
+  	<select  id="readReply" resultType="replyVO">
+  	select 
+  	rno, content, writer, regdate
+  	from po_reply
+  	where bno = #{bno}
+  	</select>
+  
+  	<!-- 댓글 작성 -->
+  	<insert id = "writeReply">
+  	insert into po_reply(
+  	bno,
+  	rno,
+  	content,
+  	writer
+  	)
+  	values(#{bno},
+  	po_reply_seq.nextval,
+  	#{content},
+  	#{writer})
+  	</insert>
+  
+  
+  </mapper>

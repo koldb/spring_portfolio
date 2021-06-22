@@ -4,4 +4,13 @@
   "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
   
+  <typeAliases>
+  <typeAlias type="com.spring.vo.BoardVO" alias="boardVO"/>
+  <typeAlias type="com.spring.vo.Criteria" alias="criteria"/>
+  <typeAlias type="com.spring.vo.SearchCriteria" alias="shcriteria"/>
+  <typeAlias type="com.spring.vo.ReplyVO" alias="replyVO"/>
+  </typeAliases>
+  
+  
+  
 </configuration>
