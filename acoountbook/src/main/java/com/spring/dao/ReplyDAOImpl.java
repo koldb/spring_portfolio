@@ -22,8 +22,27 @@ public class ReplyDAOImpl implements ReplyDAO{
 
 	//댓글 입력
 	@Override
-	public void writerReply(ReplyVO vo) throws Exception {
-		sql.insert("replyMapper.writeReply",vo);
+	public int writeReply(ReplyVO vo) throws Exception {
+		return sql.insert("replyMapper.writeReply",vo);
 	}
+
+	//댓글 수정
+	@Override
+	public int updateReply(ReplyVO vo) throws Exception {
+		return sql.update("replyMapper.updateReply", vo);
+	}
+
+	//댓글 삭제
+	@Override
+	public int deleteReply(int rno) throws Exception {
+		return sql.delete("replyMapper.deleteReply", rno);
+	}
+
+	/*
+	 * //댓글 select
+	 * 
+	 * @Override public ReplyVO selectReply(int rno) throws Exception { return
+	 * sql.selectOne("replyMapper.selectReply", rno); }
+	 */
 
 }

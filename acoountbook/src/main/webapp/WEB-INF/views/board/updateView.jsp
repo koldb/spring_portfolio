@@ -45,11 +45,12 @@ function fn_valiChk(){
 
 
 <body>
+
+<header>
+<h1>게시글 수정</h1>
+</header>
+
 	<div>
-	
-			<div>
-				<%@include file="nav.jsp" %>
-			</div>
 		<section id="container">
 			<form name="updateForm" role="form" method="post"
 				action="/board/update">

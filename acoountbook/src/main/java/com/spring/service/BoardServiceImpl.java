@@ -19,8 +19,8 @@ public class BoardServiceImpl implements BoardService{
 	
 	//게시글 작성
 	@Override
-	public void write(BoardVO boardVO) throws Exception {
-		dao.write(boardVO);
+	public int write(BoardVO boardVO) throws Exception {
+		return dao.write(boardVO);
 	}
 
 	//게시글 리스트

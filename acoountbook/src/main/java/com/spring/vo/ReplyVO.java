@@ -9,6 +9,8 @@ public class ReplyVO {
 	private String content;
 	private String writer;
 	private Date regdate;
+	private Date editdate;
+	
 	public int getBno() {
 		return bno;
 	}
@@ -39,12 +41,21 @@ public class ReplyVO {
 	public void setRegdate(Date regdate) {
 		this.regdate = regdate;
 	}
-	
+	public Date getEditdate() {
+		return editdate;
+	}
+	public void setEditdate(Date editdate) {
+		this.editdate = editdate;
+	}
 	@Override
 	public String toString() {
 		return "ReplyVO [bno=" + bno + ", rno=" + rno + ", content=" + content + ", writer=" + writer + ", regdate="
-				+ regdate + "]";
+				+ regdate + ", editdate=" + editdate + "]";
 	}
+	
+	
+	
+	
 	
 	
 	

@@ -19,8 +19,8 @@ public class BoardDAOImpl implements BoardDAO{
 	
 	//게시글 작성
 	@Override
-	public void write(BoardVO boardVO) throws Exception {
-		sqlSession.insert("boardMapper.insert", boardVO);
+	public int write(BoardVO boardVO) throws Exception {
+		return sqlSession.insert("boardMapper.insert", boardVO);
 	}
 
 	//게시글 리스트

@@ -22,9 +22,28 @@ public class ReplyServiceImpl implements ReplyService{
 
 	//댓글 입력
 	@Override
-	public void writeReply(ReplyVO vo) throws Exception {
-		dao.writerReply(vo);
+	public int writeReply(ReplyVO vo) throws Exception {
+		return dao.writeReply(vo);
 	}
+
+	//댓글 수정
+	@Override
+	public int updateReply(ReplyVO vo) throws Exception {
+		return dao.updateReply(vo);
+	}
+
+	//댓글 삭제
+	@Override
+	public int deleteReply(int rno) throws Exception {
+		return dao.deleteReply(rno);
+	}
+
+	/*
+	 * //댓글 select
+	 * 
+	 * @Override public ReplyVO selectReply(int rno) throws Exception { return
+	 * dao.selectReply(rno); }
+	 */
 	
 	
 	

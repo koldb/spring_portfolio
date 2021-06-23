@@ -5,6 +5,7 @@
 <head>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <meta charset="UTF-8">
+
 <title>게시판</title>
 </head>
 <script type="text/javascript">
@@ -38,11 +39,9 @@
 
 
 <body>
-
-		<div>
-				<%@include file="nav.jsp" %>
-			</div>
-
+<header>
+<h1>게시글 작성</h1>
+</header>
 
 	<section id="container">
 		<form role="form" name="writeForm" method="post" action="/board/write">

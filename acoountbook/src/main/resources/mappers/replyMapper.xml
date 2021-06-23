@@ -6,16 +6,16 @@
   
   <mapper namespace="replyMapper">
   
-  	<!-- 댓글 조회 -->
+  	<!-- 댓글 조회(댓글 리스트) -->
   	<select  id="readReply" resultType="replyVO">
   	select 
   	rno, content, writer, regdate, editdate
   	from po_reply
-  	where bno = #{bno}
+  	where bno = #{bno} order by regdate desc
   	</select>
   
   	<!-- 댓글 작성 -->
-  	<insert id = "writeReply">
+  	<insert id = "writeReply" parameterType="replyVO">
   	insert into po_reply(
   	bno,
   	rno,
@@ -29,17 +29,27 @@
   	</insert>
   
   	<!-- 댓글 수정 -->
-  	<update id="updateRelpy" parameterType="replyVO">
+  	<update id="updateReply" parameterType="replyVO">
   	update po_reply set content = #{content}, editdate = sysdate
   	where rno = #{rno}
   	</update>
   	
   	<!-- 댓글 삭제 -->
-  	<delete id="deleteReply" parameterType="replyVO">
+  	<delete id="deleteReply" parameterType="int">
   	delete from po_reply
   	where rno = #{rno}
   	</delete>
   	
-  	
+  	<!-- 댓글 select -->
+  <!-- 	<select id="selectReply" resultType="replyVO">
+  		select bno
+  		,rno
+  		,content
+  		,writer
+  		,regdate
+  		,editdate
+  		from po_reply
+  		where rno = #{rno}
+  	</select>  -->
   
   </mapper>

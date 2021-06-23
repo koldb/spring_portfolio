@@ -30,7 +30,7 @@
 	</h1> --%>
 	
 	<h1>
-	<a href="#" class="no-underline">자유게시판</a><br />
+	<a href="${contextPath}/board/list" class="no-underline">자유게시판</a><br />
 	<a href="#" class="no-underline">뉴스게시판</a><br />
 	<a href="#" class="no-underline">일정 관리</a><br />
 	<hr />

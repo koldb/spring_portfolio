@@ -23,18 +23,25 @@
 			value="/WEB-INF/views/board/list.jsp" />
 	</definition> 
 	
+	<definition name="board/writeView" extends="baseLayout">
+		<put-attribute name="title" value="게시글 작성" />
+		<put-attribute name="body"
+			value="/WEB-INF/views/board/writeView.jsp" />
+	</definition> 
+	
 	<definition name="board/readView" extends="baseLayout">
 		<put-attribute name="title" value="게시글 조회" />
 		<put-attribute name="body"
 			value="/WEB-INF/views/board/readView.jsp" />
 	</definition>
 	
+		<definition name="board/updateView" extends="baseLayout">
+		<put-attribute name="title" value="게시글 조회" />
+		<put-attribute name="body"
+			value="/WEB-INF/views/board/updateView.jsp" />
+	</definition>
+	
 	
 
-	<definition name="/board/writeView" extends="baseLayout">
-		<put-attribute name="title" value="게시글 작성 뷰" />
-		<put-attribute name="body"
-			value="/WEB-INF/views/board/writeView.jsp" />
-	</definition>
 
 </tiles-definitions>

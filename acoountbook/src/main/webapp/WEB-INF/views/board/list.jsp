@@ -23,18 +23,18 @@ li {
 		var result = '${result}';
 		if (result == "deleteOK") {
 			$('#deleteOK').show();
-			$('#deleteOK').fadeOut(500);
+			$('#deleteOK').fadeOut(1000);
 			a
 		}
 
 		if (result == "writeOK") {
 			$('#writeOK').show();
-			$('#writeOK').fadeOut(500);
+			$('#writeOK').fadeOut(1000);
 		}
 
 		if (result == "updateOK") {
 			$('#updateOK').show();
-			$('#updateOK').fadeOut(500);
+			$('#updateOK').fadeOut(1000);
 		}
 
 	})
@@ -48,12 +48,11 @@ li {
 	수정되었습니다.</div>
 
 <body>
+<header>
+<h1>자유게시판</h1>
+</header>
+
 	<div>
-
-		<div>
-			<%@include file="nav.jsp"%>
-		</div>
-
 		<section id="container">
 			<form role="form" method="get">
 				<table>
@@ -112,7 +111,10 @@ li {
 						});
 					</script>
 				</div>
-
+				<div>
+				<a href="/board/writeView" style="float:right" >글 작성</a>
+				</div>
+				<br />
 				<hr />
 				<div>
 					<ul>

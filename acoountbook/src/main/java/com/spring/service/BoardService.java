@@ -9,7 +9,7 @@ import com.spring.vo.SearchCriteria;
 public interface BoardService {
 
 	//게시글 작성
-	public void write(BoardVO boardVO) throws Exception;
+	public int write(BoardVO boardVO) throws Exception;
 	
 	//게시글 리스트
 	public List<BoardVO> list(SearchCriteria scri) throws Exception;
