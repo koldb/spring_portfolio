@@ -4,6 +4,9 @@ import java.util.List;
 
 import javax.inject.Inject;
 
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
@@ -132,6 +135,10 @@ public class BoardController {
 		return "redirect:/board/readView";
 		
 	}
+	
+	
+	
+	
 	
 	/*
 	 * //댓글 수정 get
