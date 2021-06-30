@@ -54,7 +54,7 @@
      <td>
        <h1><font size=30>enjoy your account!!</font></h1>
        <a href="#" style="float:right">로그인</a> <br />
-         <a href="#" style="float:right">회원 가입</a>  
+         <a href="${contextPath}/member/register" style="float:right">회원 가입</a>  
          
      </td>
   </tr>
