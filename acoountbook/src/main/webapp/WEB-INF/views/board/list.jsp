@@ -16,6 +16,10 @@
 <!-- 합쳐지고 최소화된 최신 자바스크립트 -->
 <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>	
  -->	
+ 
+ <!-- include libraries(jQuery, bootstrap) -->
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 <meta charset="UTF-8">
 <title>게시판</title>
 <style type="text/css">
@@ -60,7 +64,9 @@ li {
 <header>
 <h1>자유게시판</h1>
 </header>
-
+<%@ include file="../common/header.jsp" %>
+<%@ include file="../common/side.jsp" %>
+<%@ include file="../common/layout.jsp" %>
 	<div class="container">
 		<section id="container">
 			<form role="form" method="get">
@@ -160,7 +166,7 @@ li {
 		</section>
 
 	</div>
-
+<%@ include file="../common/footer.jsp" %>
 
 
 

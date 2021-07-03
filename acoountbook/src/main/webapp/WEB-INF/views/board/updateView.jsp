@@ -8,6 +8,10 @@
 <head>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	
+	 <!-- include libraries(bootstrap) -->
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 <meta charset="UTF-8">
 <title>게시판</title>
 </head>
@@ -45,6 +49,10 @@ function fn_valiChk(){
 
 
 <body>
+
+<%@ include file="../common/header.jsp" %>
+<%@ include file="../common/side.jsp" %>
+<%@ include file="../common/layout.jsp" %>
 
 <header>
 <h1>게시글 수정</h1>
@@ -87,7 +95,7 @@ function fn_valiChk(){
 		<hr />
 	</div>
 
-
+<%@ include file="../common/footer.jsp" %>
 
 </body>
 </html>

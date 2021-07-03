@@ -29,7 +29,7 @@ public class RestBoardController {
 
 	// 댓글 리스트
 	@RequestMapping(value = "/readReply", method = RequestMethod.POST)
-	public List<ReplyVO> getReplyList(@RequestParam("bno") int bno) throws Exception {
+	public List<ReplyVO> getReplyList(@RequestParam("bno") int bno  ) throws Exception {
 		return replyService.readReply(bno);
 	}
 

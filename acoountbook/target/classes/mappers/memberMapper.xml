@@ -20,5 +20,16 @@ insert into po_member(userId,
 </insert>
 
 
+<!-- 로그인 -->
+<select id="login" resultType="memberVO">
+select userId
+	  ,userPass
+	  from po_member
+	  where userId = #{userId}
+	  and userPass = #{userPass}
+
+</select>
+
+
 
 </mapper>

@@ -12,6 +12,19 @@
 <html>
 <head>
  <style>
+      #sidebar-left {
+        width: 10%;
+        height:700px;
+        padding: 5px;
+        margin-right: 5px;
+        margin-bottom: 5px;
+        float: left;
+         background-color: yellow;
+        border: 0px solid #bcbcbc;
+   		font-size:25px; 
+      }
+ 
+ 
    .no-underline{
       text-decoration:none;
    }
@@ -20,6 +33,8 @@
   <title>side menu</title>
 </head>
 <body>
+	<div id="sidebar-left">
+
 	<h1>메뉴</h1>
 	<hr />
 	
@@ -29,7 +44,6 @@
 		<a href="#"  class="no-underline">상품관리</a><br>
 	</h1> --%>
 	
-	<h1>
 	<a href="${contextPath}/board/list" class="no-underline">자유게시판</a><br />
 	<a href="#" class="no-underline">뉴스게시판</a><br />
 	<a href="#" class="no-underline">일정 관리</a><br />
@@ -40,8 +54,7 @@
 	<a href="#" class="no-underline">저축/지출 분석</a><br />
 	<a href="#" class="no-underline">신용카드 결산</a><br />
 	<hr />
-	</h1>
-	
+	</div>
 	
 </body>
 </html>

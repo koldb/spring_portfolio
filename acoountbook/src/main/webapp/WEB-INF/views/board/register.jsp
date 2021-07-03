@@ -8,12 +8,15 @@
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
-<!-- 합쳐지고 최소화된 최신 CSS -->
-<link rel="stylesheet"
+<!-- <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
-<!-- 부가적인 테마 -->
 <link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css"> -->
+	
+ <!-- include libraries(bootstrap) -->
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>	
+	
 <head>
 <meta charset="UTF-8">
 <title>회원가입</title>
@@ -52,6 +55,11 @@
 				return false;
 			}
 			
+		
+			self.close();
+			
+		
+			
 			
 		})
 
@@ -60,6 +68,7 @@
 
 
 <body>
+
 
 	<section id="container">
 		<form action="/member/register" method="post">
@@ -91,7 +100,6 @@
 		</form>
 
 	</section>
-
 
 
 

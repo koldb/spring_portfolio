@@ -9,6 +9,7 @@
   <typeAlias type="com.spring.vo.Criteria" alias="criteria"/>
   <typeAlias type="com.spring.vo.SearchCriteria" alias="shcriteria"/>
   <typeAlias type="com.spring.vo.ReplyVO" alias="replyVO"/>
+  <typeAlias type="com.spring.vo.MemberVO" alias="memberVO"/>
   </typeAliases>
   
   

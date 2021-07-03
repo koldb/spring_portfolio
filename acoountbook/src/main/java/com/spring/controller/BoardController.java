@@ -3,6 +3,7 @@ package com.spring.controller;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
@@ -60,6 +61,7 @@ public class BoardController {
 	public String writer(BoardVO boardVO, RedirectAttributes rttr) throws Exception {
 		logger.info("write");
 		service.write(boardVO);
+		
 		rttr.addFlashAttribute("result", "writeOK");
 		return "redirect:/board/list";
 	}
@@ -85,7 +87,7 @@ public class BoardController {
 		logger.info("read");
 		model.addAttribute("read", service.read(boardVO.getBno()));
 		model.addAttribute("scri", scri);
-
+		
 		List<ReplyVO> replyList = replyService.readReply(boardVO.getBno());
 		model.addAttribute("replyList", replyList);
 

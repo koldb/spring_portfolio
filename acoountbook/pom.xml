@@ -208,6 +208,23 @@
               <version>1.3.1</version>
           </dependency>	
 
+<!-- Lucy-xss-servlet-filter -->
+<dependency>
+<groupId>com.navercorp.lucy</groupId>
+<artifactId>lucy-xss-servlet</artifactId>
+<version>2.0.1</version>
+</dependency>
+
+<!-- Lucy json 관련 추가 처리 -->
+<!-- https://mvnrepository.com/artifact/com.navercorp.lucy/lucy-xss -->
+<dependency>
+    <groupId>com.navercorp.lucy</groupId>
+    <artifactId>lucy-xss</artifactId>
+    <version>1.6.3</version>
+</dependency>
+
+
+
 
 
 

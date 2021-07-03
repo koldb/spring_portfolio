@@ -3,6 +3,7 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
 <!DOCTYPE html>
 <html>
@@ -18,14 +19,20 @@
 <!-- 합쳐지고 최소화된 최신 자바스크립트 -->
 <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>	
  -->
- <meta charset="UTF-8">
+<meta charset="UTF-8">
 <!-- Bootstrap CSS -->
 
-<link rel="stylesheet"
+<!-- <link rel="stylesheet"
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
 	integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
-	crossorigin="anonymous">
+	crossorigin="anonymous"> -->
 
+<!-- include libraries(bootstrap) -->
+<link
+	href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+	rel="stylesheet">
+<script
+	src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
 <title>게시판</title>
 </head>
@@ -35,6 +42,15 @@
 			.ready(
 					function() {
 
+						var text = $('#content').text();
+						var htmlc = $('#content').html();
+						console.log(text);
+						console.log(htmlc);
+						
+			
+						
+						
+						
 						showReplyList();
 
 						var formObj = $("form[name = 'readForm']");
@@ -64,12 +80,10 @@
 													+ "&searchType=${scri.searchType}&keyword=${scri.keyword}");
 										})
 
-						/* 	//댓글 작성
-						 $(".replyWrite_btn").on("click", function () {
-						 var formObj = $("form[name='replyForm']");
-						 formObj.attr("action", "/board/replyWrite");
-						 formObj.submit();
-						 }); */
+						/* $(function() {
+							$(".content").text("${read.content}");
+						}); */
+					
 
 					});
 
@@ -87,9 +101,11 @@
 					success : function(result) {
 						var htmls = "";
 						if (result.length < 1) {
-							htmls.push("등록된 댓글이 없습니다.");
+							htmls += "등록된 댓글이 없습니다.";
 						} else {
-							$(result).each(function() {
+							$(result)
+									.each(
+											function() {
 												htmls += '<div class="media text-muted pt-3" id="rno' + this.rno + '">';
 												htmls += '<svg class="bd-placeholder-img mr-2 rounded" width="32" height="32" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder:32x32">';
 												htmls += '<title>Placeholder</title>';
@@ -238,6 +254,10 @@
 
 
 <body>
+	<%@ include file="../common/header.jsp"%>
+	<%@ include file="../common/side.jsp"%>
+	<%@ include file="../common/layout.jsp"%>
+
 	<header>
 		<h1>게시글 읽기</h1>
 	</header>
@@ -254,27 +274,28 @@
 					type="hidden" id="keyword" name="keyword" value="${scri.keyword }" />
 
 			</form>
-			
-					<div class="form-group">
-					<label for="title" class="col-sm-2 control-label">제목</label>
-					<input type="text"
-							id="title" name="title" value="${read.title}" readonly="readonly" class="form-control-label"/>
-					</div>
-					<div class="form-group">		
-					<label for="content" class="col-sm-2 control-label">내용</label>
-					<textarea id="content" name="content" readonly="readonly" class="form-control"><c:out
-									value="${read.content}" /></textarea>
-					</div>				
-					<div class="form-group">
-					<label for="writer" class="col-sm-2 control-label">작성자</label>
-					<input type="text" id="writer" name="writer" value="${read.writer}"
-							readonly="readonly" class="form-control"/>
-					</div>
-					<div class="form-group">				
-					<label for="regdate" class="col-sm-2 control-label">작성날짜</label>
-					 <fmt:formatDate value="${read.regdate}" pattern="yyyy-MM-dd" />
-					</div>
-				<div>
+
+			<div class="form-group">
+				<label for="title" class="col-sm-2 control-label">제목</label> <input
+					type="text" id="title" name="title" value="${read.title}"
+					readonly="readonly" class="form-control-label" />
+			</div>
+			<div class="form-group">
+				<label for="content" class="col-sm-2 control-label">내용</label>
+				<textarea id="content" name="content" readonly="readonly"
+					class="form-control">${read.content }
+					<%-- <c:out value="${read.content}" escapeXml="false" ></c:out> --%></textarea>
+			</div>
+			<div class="form-group">
+				<label for="writer" class="col-sm-2 control-label">작성자</label> <input
+					type="text" id="writer" name="writer" value="${read.writer}"
+					readonly="readonly" class="form-control" />
+			</div>
+			<div class="form-group">
+				<label for="regdate" class="col-sm-2 control-label">작성날짜</label>
+				<fmt:formatDate value="${read.regdate}" pattern="yyyy-MM-dd" />
+			</div>
+			<div>
 				<button type="button" class="update_btn btn btn-warning">수정</button>
 				<button type="button" class="delete_btn btn btn-danger">삭제</button>
 				<button type="button" class="list_btn btn btn-primary">목록</button>
@@ -336,7 +357,7 @@
 		<hr />
 	</div>
 
-
+	<%@ include file="../common/footer.jsp"%>
 
 </body>
 </html>

@@ -15,54 +15,20 @@
           text-align:center;
         border: 0px solid #bcbcbc;
       }
-      #header {
-        padding: 5px;
-        margin-bottom: 5px;
-        border: 0px solid #bcbcbc;
-         background-color: lightgreen;
-      }
-      #sidebar-left {
-        width: 10%;
-        height:700px;
-        padding: 5px;
-        margin-right: 5px;
-        margin-bottom: 5px;
-        float: left;
-         background-color: yellow;
-        border: 0px solid #bcbcbc;
-        font-size:10px;
-      }
-      #bodycontent {
+
+   
+   /*    #bodycontent {
         width: 75%;
         padding: 5px;
         margin-right: 5px;
         float: left;
         border: 0px solid #bcbcbc;
-      }
-      #footer {
-        clear: both;
-        padding: 5px;
-        border: 0px solid #bcbcbc;
-         background-color: lightblue;
-      }
+      } */
+   
       
     </style>
-    <title><tiles:insertAttribute name="title" /></title>
   </head>
     <body>
-    <div id="container">
-      <div id="header">
-         <tiles:insertAttribute name="header"/>
-      </div>
-      <div id="sidebar-left">
-          <tiles:insertAttribute name="side"/> 
-      </div>
-      <div id="bodycontent">
-          <tiles:insertAttribute name="body"/>
-      </div>
-      <div id="footer">
-          <tiles:insertAttribute name="footer"/>
-      </div>
-    </div>
+ 
   </body>
 </html>
