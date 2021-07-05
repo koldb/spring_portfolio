@@ -17,75 +17,87 @@
 	</insert>
 
 	<!-- 게시글 리스트 -->
-	<select id="listPage" resultType="boardVO" parameterType="shcriteria">
-	select bno,
-	title,
-	content,
-	writer,
-	regdate
-	from(
-	select bno,
-	title,
-	content,
-	writer,
-	regdate,
-	row_number() over(order by bno desc) as rnum
-	from po_board
-	where 1=1 <include refid = "search"></include>) poboard
-	where rnum between #{rowStart} and #{rowEnd}
-	order by bno desc
+	<select id="listPage" resultType="boardVO"
+		parameterType="shcriteria">
+		select bno,
+		title,
+		content,
+		writer,
+		regdate,
+		hit
+		from(
+		select bno,
+		title,
+		content,
+		writer,
+		regdate,
+		hit,
+		row_number() over(order by bno desc) as rnum
+		from po_board
+		where 1=1
+		<include refid="search"></include>
+		) poboard
+		where rnum between #{rowStart} and #{rowEnd}
+		order by bno desc
 	</select>
 
 	<!-- 게시글 총 갯수 -->
-	<select id="listCount" parameterType="shcriteria" resultType="int">
+	<select id="listCount" parameterType="shcriteria"
+		resultType="int">
 		select count(bno)
 		from po_board
-		where 1=1 
+		where 1=1
 		<include refid="search"></include>
 		and bno > 0
 	</select>
 
 	<sql id="search">
-	<if test="searchType != null">
+		<if test="searchType != null">
 			<if test="searchType == 't'.toString()">AND TITLE LIKE '%' || #{keyword} || '%'</if>
 			<if test="searchType == 'c'.toString()">AND CONTENT LIKE '%' || #{keyword} || '%'</if>
 			<if test="searchType == 'w'.toString()">AND WRITER LIKE '%' || #{keyword} || '%'</if>
-			<if test="searchType == 'tc'.toString()">AND (TITLE LIKE '%' || #{keyword} || '%') or (CONTENT LIKE '%' || #{keyword} || '%')</if>
+			<if test="searchType == 'tc'.toString()">AND (TITLE LIKE '%' || #{keyword} || '%') or (CONTENT
+				LIKE '%' || #{keyword} || '%')</if>
 		</if>
 	</sql>
 
 
 
 	<!-- 게시글 읽기 -->
-	<select  id="read" parameterType="int" resultType="boardVO">
-	select bno,
-	title,
-	content,
-	writer,
-	regdate
-	from po_board
-	where bno = #{bno}
+	<select id="read" parameterType="int" resultType="boardVO">
+		select bno,
+		title,
+		content,
+		writer,
+		regdate
+		from po_board
+		where bno = #{bno}
 	</select>
-	
+
 	<!-- 게시글 수정 -->
 	<update id="update" parameterType="boardVO">
-	update po_board
-	set title = #{title},
-	content = #{content}
-	where bno = #{bno}	
+		update po_board
+		set title = #{title},
+		content = #{content}
+		where bno = #{bno}
 	</update>
-	
+
 	<!-- 게시글 삭제 -->
 	<delete id="delete" parameterType="int">
-	delete 
-	from po_board
-	where bno = #{bno}
+		delete
+		from po_board
+		where bno = #{bno}
 	</delete>
-	
-	
-	
-	
-	
-	
+
+	<!-- 조회수 -->
+	<update id="boardHit" parameterType="int">
+		update po_board set
+		hit = hit +1
+		where bno = #{bno}
+	</update>
+
+
+
+
 
 </mapper>

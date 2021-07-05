@@ -30,7 +30,8 @@
 		$("#cancel").on("click", function() {
 			self.close();
 		})
-
+		
+		//회원 가입 폼 submit
 		$("#submit").on("click", function() {
 
 			if ($("#userId").val() == "") {
@@ -61,11 +62,13 @@
 
 			regfor();
 		});
-
+	
+		//회원가입 폼
 		function regfor() {
 			var params = $("#regform").serialize();
 			$.ajax({
 				url : "/member/register",
+				type : "POST",
 				data : params,
 				success : function(xh) {
 					var idChkVal = $("#idChk").val();
@@ -80,11 +83,14 @@
 			});
 		};
 
+		
+		//중복 아이디체크 클릭
 		$("#idChk").on("click", function() {
 
 			idChk()
 		});
-
+		
+		//중복 아이디 체크
 		function idChk() {
 			$.ajax({
 				url : "/member/idChk",
@@ -115,7 +121,7 @@
 			id="regform">
 			<div class="form-group has-feedback">
 				<label class="control-label" for=userId>아이디</label> <input
-					class="form-control" type="text" id="userId" name="userId" />
+					class="form-control" type="text" id="userId" name="userId" autofocus="autofocus"/>
 				<button class="idChk" type="button" name="idChk" id="idChk"
 					value="N">중복 체크</button>
 			</div>

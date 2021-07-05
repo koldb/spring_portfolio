@@ -6,6 +6,8 @@ import javax.inject.Inject;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Isolation;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.spring.dao.BoardDAO;
 import com.spring.vo.BoardVO;
@@ -36,8 +38,10 @@ public class BoardServiceImpl implements BoardService{
 	}
 
 	//게시글 읽기
+	@Transactional(isolation = Isolation.READ_COMMITTED)
 	@Override
 	public BoardVO read(int bno) throws Exception {
+		dao.boardHit(bno);
 		return dao.read(bno);
 	}
 

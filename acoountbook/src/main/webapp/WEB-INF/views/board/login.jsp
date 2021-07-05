@@ -23,6 +23,10 @@ $(document).ready(function () {
 		location.href = "member/logout";
 	})
 	
+	$("#cancel").on("click", function () {
+		self.close();
+	})
+	
 	$("#reg").on("click", function () {
 		var popupX = (window.screen.width / 2)  - (450 / 2);
 		//&nbsp;만들 팝업창 좌우 크기의 1/2 만큼 보정값으로 빼주었음
@@ -36,21 +40,37 @@ $(document).ready(function () {
 		
 	})
 	
-	$("#login").on("click", function () {
-
+	$("#submit").on("click", function () {
+		/* $.ajax({
+			url : "/member/passChk",
+			type : "POST",
+			dataType : "json",
+			data : $("#loginForm").serializeArray(),
+			success: function(data){
+				
+				if(data != true){
+					alert("패스워드가 틀렸습니다. 다시 입력하세요.");
+					return;
+				}else{
+					window.opener.location.reload();
+					window.close();
+				}
+			}
+		}) */
+		
 		loginsubmit();
 		
-		
-	})
+	});
 	
 	
 	function loginsubmit()
 		{
-			var params = $("#loginForm").serialize();
+			var params = $("#loginForm").serializeArray();
 			$.ajax(
 			{
 				url : "/member/login",
 				data : params,
+				type : "POST",
 				success : function(xh)
 						{					
 							window.opener.location.reload();
@@ -86,8 +106,9 @@ $(document).ready(function () {
 		</div>
 		
 		<div>
-		<button type="submit" id="login">로그인</button>
+		<button type="button" id="submit">로그인</button>
 		<button type="button" id="reg" >회원가입</button>
+		<button type="button" id="cancel" >취소</button>
 		</div>
 		</c:if>
 		

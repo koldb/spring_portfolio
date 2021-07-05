@@ -43,7 +43,7 @@
       }
       
     </style>
-<title>header</title>
+<title >header</title>
 </head>
 <body>
 
@@ -58,22 +58,22 @@
      </td> --%>
      
      <td>
-       <h1><font size=30>enjoy your account!!</font></h1>
+       <h1 style="text-align: center"><font size=30 >enjoy your account!!</font></h1>
      <ul>
-	<li>
+	<li style="list-style: none;">
 		<c:if test="${member != null}">
 			<a href="/member/memberModifyView">${member.userId}님.</a>
 		</c:if>
 	</li>  
 	
-	<li>
+	<li style="list-style: none;">
 		<c:if test="${member != null}"><a href="/member/logout">로그아웃</a></c:if>
 		<c:if test="${member == null}"><a href="javascript:loginpopup()" >로그인</a></c:if> &nbsp;
 		<c:if test="${member == null}"> <a href="javascript:joinmember()" style="float:right" id="reg">회원 가입</a>  </c:if>
 	</li>
 	
 	
-	<li>
+	<li style="list-style: none;">
 		<c:if test="${msg == false }">
 			<p style="color: red;">아이디와 비밀번호를 확인하세요</p>
 		</c:if>

@@ -32,6 +32,7 @@
 		function pwdchk() {
 			$("#alert-success").hide();
 			$("#alert-danger").hide();
+			$("#submit").hide();
 			$("input").keyup(function () {
 				var pwd1 = $("#userPass").val();
 				var pwd2 = $("#userPass2").val();
@@ -40,19 +41,72 @@
 					if(pwd1 == pwd2){
 						$("#alert-success").show();
 						$("#alert-danger").hide();
+						$("#submit").show();
+						
 					}else{
 						$("#alert-success").hide();
 						$("#alert-danger").show();
+						$("#submit").hide();
 					}
 				}
 				
 				if(pwd2 == ""){
 					$("#alert-success").hide();
 					$("#alert-danger").hide();
+					$("#submit").hide();
 				}
 					
 			})
 		};
+		
+		
+		$("#submit").on("click", function () {
+			if($("#userPass").val()==""){
+				alert("비밀번호를 입력해주세요.");
+				$("#userPass").focus();
+				return false;
+			}
+			if($("#userName").val()==""){
+				alert("성명을 입력해주세요.");
+				$("#userName").focus();
+				return false;
+			}
+			if($("#email").val()==""){
+				alert("이메일을 입력해주세요.");
+				$("#email").focus();
+				return false;
+			}
+			
+			
+			$.ajax({
+				url : "/member/memberModify",
+				type : "POST",
+				dateType : "json",
+				data : $("#modifyMember").serializeArray(),
+				success: function(data){
+					if(confirm("회원정보 수정하시겠습니까?")){
+						$("#modifyMember").submit();
+						history.go(-1);
+					}
+						
+					
+					
+				/* 	if(data==1){
+						if(confirm("회원정보 수정하시겠습니까?")){
+							$("#modifyMember").submit();
+							history.go(-1);
+						}
+						
+					}else{
+						alert("패스워드가 틀렸습니다.");
+						event.preventDefault();
+						return false;
+					} */
+				}
+			})
+		});
+		
+		
 		
 		
 		
@@ -67,7 +121,7 @@
 </head>
 <body>
 <section id="container">
-			<form action="/member/memberModify" method="post">
+			<form action="/member/memberModify" method="post" id="modifyMember">
 				<div class="form-group has-feedback">
 					<label class="control-label" for="userId">아이디</label>
 					<input class="form-control" type="text" id="userId" name="userId" value="${member.userId}" readonly="readonly"/>
@@ -100,7 +154,7 @@
 				
 				
 				<div class="form-group has-feedback">
-					<button class="btn btn-success" type="submit" id="submit">회원정보수정</button>
+					<button class="btn btn-success" type="button" id="submit">회원정보 수정</button>
 					<button class="btn btn-success" type="button" id="deleteBtn">회원탈퇴</button>
 					<button class="cencle btn btn-danger" type="button" id=cancelBtn>취소</button>
 				</div>

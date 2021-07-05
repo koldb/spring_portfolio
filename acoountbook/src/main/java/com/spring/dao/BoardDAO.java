@@ -26,6 +26,9 @@ public interface BoardDAO {
 	//게시글 삭제
 	public void delete(int bno) throws Exception;
 	
+	//조회수
+	public void boardHit(int bno) throws Exception;
+	
 	
 	
 }
