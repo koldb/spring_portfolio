@@ -61,12 +61,15 @@ li {
 	수정되었습니다.</div>
 
 <body>
-<header>
-<h1>자유게시판</h1>
-</header>
+
 <%@ include file="../common/header.jsp" %>
 <%@ include file="../common/side.jsp" %>
 <%@ include file="../common/layout.jsp" %>
+
+<header>
+<h1>자유게시판</h1>
+</header>
+
 	<div class="container">
 		<section id="container">
 			<form role="form" method="get">

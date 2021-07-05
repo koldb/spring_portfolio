@@ -15,7 +15,8 @@
 <title>로그인</title>
 </head>
 
-<a href="/board/list">게시판으로 바로 가기</a><br />
+<!-- <a href="/board/list">게시판으로 바로 가기</a><br /> -->
+
 <script type="text/javascript">
 $(document).ready(function () {
 	$("#logoutBtn").on("click", function () {
@@ -31,18 +32,52 @@ $(document).ready(function () {
 
 		window.open("${contextPath}/member/register","register",'status=no, height=450, width=450, left='+ popupX + ', top='+ popupY)
 		
+		self.close();
+		
 	})
+	
+	$("#login").on("click", function () {
+
+		loginsubmit();
+		
+		
+	})
+	
+	
+	function loginsubmit()
+		{
+			var params = $("#loginForm").serialize();
+			$.ajax(
+			{
+				url : "/member/login",
+				data : params,
+				success : function(xh)
+						{					
+							window.opener.location.reload();
+							window.close();
+						}
+			});
+		}
+	
+	
+	
+	/* 
+	//자식 창에서 부모창 새로고침
+	window.opener.location.reload();
+	//자식 창 닫기
+	window.close();
+	 */
 	
 })
 
 </script>
 
 <body>
-	<form action="/member/login" name="loginForm" method="post">
+	<form action="/member/login" name="loginForm" id="loginForm" method="post">
 		<c:if test="${member == null }">
 		<div>
 		<label for="userId"></label>
-		<input type="text" id="userId" name="userId">
+		<input type="text" id="userId" name="userId" autofocus="autofocus">
 		</div>
 		
 		<div>
@@ -51,17 +86,17 @@ $(document).ready(function () {
 		</div>
 		
 		<div>
-		<button type="submit">로그인</button>
+		<button type="submit" id="login">로그인</button>
 		<button type="button" id="reg" >회원가입</button>
 		</div>
 		</c:if>
 		
-		<c:if test="${member != null }">
+		<%-- <c:if test="${member != null }">
 		<div>
 		<p>${member.userId } 님 환영 합니다.</p>
 		<button id="logoutBtn" type="button">로그 아웃</button>
 		</div>
-		</c:if>
+		</c:if> --%>
 		
 		<c:if test="${msg == false }">
 			<p style="color: red;">아이디와 비밀번호를 확인하세요</p>

@@ -14,6 +14,16 @@
 
 		window.open("${contextPath}/member/register","register",'status=no, height=450, width=450, left='+ popupX + ', top='+ popupY)
 	}
+	
+	function loginpopup() {
+		var popupX = (window.screen.width / 2)  - (450 / 2);
+		//&nbsp;만들 팝업창 좌우 크기의 1/2 만큼 보정값으로 빼주었음
+
+		var popupY= (window.screen.height / 2) - (450 / 2);
+		//&nbsp;만들 팝업창 상하 크기의 1/2 만큼 보정값으로 빼주었음
+
+		window.open("${contextPath}/member/login","login",'status=no, height=450, width=450, left='+ popupX + ', top='+ popupY)
+	}
 
 
 
@@ -39,30 +49,44 @@
 
 <table border=0  width="100%" id="header">
   <tr>
-     <td>
+ <%--     <td>
        <h1><font size=30>enjoy your account!!</font></h1>
        <a href="#" style="float:right">로그인</a> <br />
-       <%--   <a href="${contextPath}/member/register" style="float:right" >회원 가입</a>   --%>
+         <a href="${contextPath}/member/register" style="float:right" >회원 가입</a>  
          <a href="javascript:joinmember()" style="float:right" id="reg">회원 가입</a>  
          
+     </td> --%>
+     
+     <td>
+       <h1><font size=30>enjoy your account!!</font></h1>
+     <ul>
+	<li>
+		<c:if test="${member != null}">
+			<a href="/member/memberModifyView">${member.userId}님.</a>
+		</c:if>
+	</li>  
+	
+	<li>
+		<c:if test="${member != null}"><a href="/member/logout">로그아웃</a></c:if>
+		<c:if test="${member == null}"><a href="javascript:loginpopup()" >로그인</a></c:if> &nbsp;
+		<c:if test="${member == null}"> <a href="javascript:joinmember()" style="float:right" id="reg">회원 가입</a>  </c:if>
+	</li>
+	
+	
+	<li>
+		<c:if test="${msg == false }">
+			<p style="color: red;">아이디와 비밀번호를 확인하세요</p>
+		</c:if>
+	</li>
+	
+  
+</ul>
      </td>
+     
   </tr>
   </table>
   
-<ul>
-	<li>
-		<c:if test="${member != null}"><a href="/member/logout">로그아웃</a></c:if>
-		<c:if test="${member == null}"><a href="../board/login.jsp">로그인</a></c:if>
-		<c:if test="${member == null}"> <a href="javascript:joinmember()" style="float:right" id="reg">회원 가입</a>  </c:if>
-	</li>
-	<li>
-		<c:if test="${member != null}">
-			<p>${member.userId}님.</p>
-		</c:if>
-	</li>  
-  
-</ul>
-  
+
   
 
 

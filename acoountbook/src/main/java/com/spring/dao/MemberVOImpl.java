@@ -24,6 +24,32 @@ public class MemberVOImpl implements MemberDAO{
 	public MemberVO login(MemberVO vo) throws Exception {
 		return sql.selectOne("memberMapper.login", vo);
 	}
+
+	//회원정보 수정
+	@Override
+	public void memberUpdate(MemberVO vo) throws Exception {
+		sql.update("memberMapper.memberUpdate",vo);
+	}
+	
+	//회원 탈퇴
+	@Override
+	public void memberDelete(MemberVO vo) throws Exception {
+		sql.delete("memberMapper.memberDelete", vo);
+	}
+	
+	//패스워드 체크
+	@Override
+	public int passChk(MemberVO vo) throws Exception {
+		int result = sql.selectOne("memberMapper.passChk", vo);
+		return result;
+	}
+
+	//중복 아이디 체크
+	@Override
+	public int idChk(MemberVO vo) throws Exception {
+		int result = sql.selectOne("memberMapper.idChk", vo);
+		return result;
+	}
 	
 
 }

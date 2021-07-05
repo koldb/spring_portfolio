@@ -3,32 +3,66 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-  
+
 <mapper namespace="memberMapper">
 
-<!-- 회원가입 -->
-<insert id="register">
+	<!-- 회원가입 -->
+	<insert id="register">
 
-insert into po_member(userId,
-					userPass,
-					userName,
-					email)
-				values(#{userId}
-						,#{userPass}
-						,#{userName}
-						,#{email})
-</insert>
+		insert into po_member(userId,
+		userPass,
+		userName,
+		email)
+		values(#{userId}
+		,#{userPass}
+		,#{userName}
+		,#{email})
+	</insert>
 
 
-<!-- 로그인 -->
-<select id="login" resultType="memberVO">
-select userId
-	  ,userPass
-	  from po_member
-	  where userId = #{userId}
-	  and userPass = #{userPass}
+	<!-- 로그인 -->
+	<select id="login" resultType="memberVO">
+		select userId
+		,userPass
+		,userName
+		,email
+		,regDate
+		from po_member
+		where userId = #{userId}
+		and userPass = #{userPass}
+	</select>
 
-</select>
+	<!-- 회원정보 수정 -->
+	<update id="memberUpdate">
+		update po_member set
+		userPass = #{userPass},
+		userName = #{userName},
+		email = #{email}
+		where userId = #{userId}
+	</update>
+	
+	<!-- 회원 탈퇴 id/passward 조건 검색 -->
+	<select id="passChk" resultType="int">
+	select count(*) from po_member
+	where userId = #{userId}
+	and userPass = #{userPass}
+	</select>
+	
+	
+	<!-- 회원 탈퇴 -->
+	<delete id="memberDelete">
+	delete from po_member
+	where userId = #{userId}
+	and userPass = #{userPass}
+	</delete>
+
+	<!-- 아이디 중복 체크 -->
+	<select id="idChk" resultType="int">
+	select count(*) from po_member
+	where userId = #{userId}
+	
+	</select>
+	
 
 
 
