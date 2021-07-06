@@ -314,6 +314,7 @@
 
 				<!-- Reply Form {s} -->
 
+				<c:if test="${member.userId != null }">
 				<div class="my-3 p-3 bg-white rounded shadow-sm"
 					style="padding-top: 10px">
 
@@ -328,7 +329,7 @@
 
 							<div class="col-sm-2">
 								<input name="rpwriter" class="rpwform" id="rpwriter"
-									placeholder="댓글 작성자" />
+									placeholder="댓글 작성자" value="${member.userId }" />
 
 								<button type="button" class="rpbtn" id="replyWrite_btn">
 									댓글 등록</button>
@@ -336,6 +337,19 @@
 						</div>
 					</form:form>
 				</div>
+				</c:if>
+				
+					<c:if test="${member.userId == null }">
+						<p>로그인 후 댓글 작성 하실 수 있습니다.</p>
+						<table>
+						<tr>
+						<td>
+						<button class="cancel_btn" type="button">목록</button>
+						</td>
+						</tr>
+						</table>
+					</c:if>
+				
 
 				<!-- Reply Form {e} -->
 
