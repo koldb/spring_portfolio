@@ -51,19 +51,21 @@ public class MemberController {
 	
 	//로그인
 	@RequestMapping(value="/login", method = RequestMethod.POST)
-	public String login(MemberVO vo, RedirectAttributes rttr, HttpServletRequest req) throws Exception{
+	public String login(MemberVO vo,  HttpServletRequest req, RedirectAttributes rttr) throws Exception{
 		logger.info("post login");
 		
 		HttpSession session = req.getSession();
-			
 		MemberVO login = service.login(vo);
-
+		
 		if(login == null) {
 			session.setAttribute("member", null);
-			rttr.addFlashAttribute("msg",false);
+			//rttr.addFlashAttribute("msg", false);
+			session.setAttribute("msg", false);
+			System.out.println("로그인 null");
 		}else {
 			session.setAttribute("member", login);
-			
+			session.setAttribute("msg", null);
+			System.out.println("성공");
 		}
 		return "redirect:/board/list";
 	}

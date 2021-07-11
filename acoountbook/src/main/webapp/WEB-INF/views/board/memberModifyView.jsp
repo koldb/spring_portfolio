@@ -77,7 +77,6 @@
 				return false;
 			}
 			
-			
 			$.ajax({
 				url : "/member/memberModify",
 				type : "POST",
@@ -86,24 +85,16 @@
 				success: function(data){
 					if(confirm("회원정보 수정하시겠습니까?")){
 						$("#modifyMember").submit();
-						history.go(-1);
+						//history.go(-1);
+						window.close();
 					}
-						
-					
-					
-				/* 	if(data==1){
-						if(confirm("회원정보 수정하시겠습니까?")){
-							$("#modifyMember").submit();
-							history.go(-1);
-						}
-						
-					}else{
-						alert("패스워드가 틀렸습니다.");
-						event.preventDefault();
-						return false;
-					} */
 				}
 			})
+			
+			
+			
+			
+			
 		});
 		
 		

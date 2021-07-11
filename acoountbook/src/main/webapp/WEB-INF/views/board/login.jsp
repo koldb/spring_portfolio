@@ -41,22 +41,6 @@ $(document).ready(function () {
 	})
 	
 	$("#submit").on("click", function () {
-		/* $.ajax({
-			url : "/member/passChk",
-			type : "POST",
-			dataType : "json",
-			data : $("#loginForm").serializeArray(),
-			success: function(data){
-				
-				if(data != true){
-					alert("패스워드가 틀렸습니다. 다시 입력하세요.");
-					return;
-				}else{
-					window.opener.location.reload();
-					window.close();
-				}
-			}
-		}) */
 		
 		loginsubmit();
 		
@@ -72,7 +56,8 @@ $(document).ready(function () {
 				data : params,
 				type : "POST",
 				success : function(xh)
-						{					
+						{				
+							$("#loginForm").submit();
 							window.opener.location.reload();
 							window.close();
 						}
@@ -111,17 +96,12 @@ $(document).ready(function () {
 		<button type="button" id="cancel" >취소</button>
 		</div>
 		</c:if>
-		
-		<%-- <c:if test="${member != null }">
-		<div>
-		<p>${member.userId } 님 환영 합니다.</p>
-		<button id="logoutBtn" type="button">로그 아웃</button>
-		</div>
-		</c:if> --%>
-		
-		<c:if test="${msg == false }">
+
+
+	<%-- 	<c:if test="${msg == false }">
 			<p style="color: red;">아이디와 비밀번호를 확인하세요</p>
 		</c:if>
+		<c:if test="${msg == null }"></c:if> --%>
 		
 		
 	</form>	

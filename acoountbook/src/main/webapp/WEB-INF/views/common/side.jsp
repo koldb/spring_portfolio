@@ -22,6 +22,7 @@
          background-color: yellow;
         border: 0px solid #bcbcbc;
    		font-size:25px; 
+   		text-align: center;
       }
  
  

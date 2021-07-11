@@ -28,11 +28,29 @@ li {
 	float: left;
 	padding: 6px;
 }
+
+th{
+text-align: center;
+}
+
+.paging{
+text-align: center;
+margin:0 auto;
+}
+
+/* header{
+ margin-left: 850px;    
+}
+ */
+
 </style>
 
 </head>
 <script type="text/javascript">
 	$(document).ready(function() {
+		
+		console.log(${msg});
+		
 		var result = '${result}';
 		if (result == "deleteOK") {
 			$('#deleteOK').show();
@@ -59,6 +77,9 @@ li {
 	작성되었습니다.</div>
 <div id="updateOK" role="update alert" style="display: none">글이
 	수정되었습니다.</div>
+
+
+
 
 <body>
 
@@ -123,9 +144,7 @@ li {
 					
 					<script>
 						$(function() {
-							$('#searchBtn')
-									.click(
-											function() {
+							$('#searchBtn').click(function() {
 												self.location = "list"
 														+ '${pageMaker.makeQuery(1)}'
 														+ "&searchType="
@@ -146,7 +165,8 @@ li {
 				</div>
 				<br />
 				<hr />
-				<div class="col-md-offset-3">
+				
+				<div class="paging col-md-offset-3" >
 					<ul class="pagination">
 						<c:if test="${pageMaker.prev}">
 							<li><a
@@ -167,6 +187,8 @@ li {
 				</div>
 
 			</form>
+
+
 
 		</section>
 

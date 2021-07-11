@@ -30,18 +30,18 @@
   
   	<!-- 댓글 수정 -->
   	<update id="updateReply" parameterType="replyVO">
-  	update po_reply set content = #{content}, editdate = sysdate
+  	update po_reply set content = #{content , jdbcType=VARCHAR}, editdate = sysdate
   	where rno = #{rno}
   	</update>
   	
   	<!-- 댓글 삭제 -->
-  	<delete id="deleteReply" parameterType="int">
+  	<delete id="deleteReply" parameterType="replyVO">
   	delete from po_reply
   	where rno = #{rno}
   	</delete>
   	
   	<!-- 댓글 select -->
-  <!-- 	<select id="selectReply" resultType="replyVO">
+ 	<select id="selectReply" resultType="replyVO">
   		select bno
   		,rno
   		,content
@@ -50,6 +50,6 @@
   		,editdate
   		from po_reply
   		where rno = #{rno}
-  	</select>  -->
+  	</select> 
   
   </mapper>

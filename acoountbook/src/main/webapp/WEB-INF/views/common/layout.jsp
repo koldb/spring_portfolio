@@ -9,23 +9,10 @@
   <head>
     <meta charset="UTF-8">
     <style>
-      #container {
-        width: 100%;
-        margin: 0px auto;
-          text-align:center;
-        border: 0px solid #bcbcbc;
-      }
-
+header{
+ margin-left: 850px;    
+}
    
-   /*    #bodycontent {
-        width: 75%;
-        padding: 5px;
-        margin-right: 5px;
-        float: left;
-        border: 0px solid #bcbcbc;
-      } */
-   
-      
     </style>
   </head>
     <body>

@@ -3,6 +3,7 @@ package com.spring.service;
 import java.util.List;
 
 import javax.inject.Inject;
+import javax.servlet.http.HttpServletRequest;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Service;
@@ -18,6 +19,7 @@ public class BoardServiceImpl implements BoardService{
 
 	@Inject
 	private BoardDAO dao;
+	
 	
 	//게시글 작성
 	@Override
@@ -50,11 +52,13 @@ public class BoardServiceImpl implements BoardService{
 	public void update(BoardVO boardVO) throws Exception {
 		dao.update(boardVO);
 	}
-
+	
+	//게시글 삭제
 	@Override
 	public void delete(int bno) throws Exception {
 		dao.delete(bno);
 	}
+
 
 	
 }

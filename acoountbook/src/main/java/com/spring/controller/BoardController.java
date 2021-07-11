@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 
 import javax.inject.Inject;
@@ -26,7 +27,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import org.springframework.web.servlet.support.RequestContextUtils;
 
 import com.google.gson.JsonObject;
 import com.spring.service.BoardService;
@@ -68,7 +71,7 @@ public class BoardController {
 
 	// 게시글 리스트
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
-	public String list(Model model, @ModelAttribute("scri") SearchCriteria scri) throws Exception {
+	public String list(Model model, @ModelAttribute("scri") SearchCriteria scri, HttpServletRequest request) throws Exception {
 		logger.info("list");
 		model.addAttribute("list", service.list(scri));
 
@@ -77,7 +80,6 @@ public class BoardController {
 		pageMaker.setTotalCount(service.listCount(scri));
 
 		model.addAttribute("pageMaker", pageMaker);
-
 		return "board/list";
 	}
 
@@ -122,8 +124,7 @@ public class BoardController {
 
 	// 게시글 삭제
 	@RequestMapping(value = "/delete", method = RequestMethod.POST)
-	public String delete(BoardVO boardVO, @ModelAttribute("scri") SearchCriteria scri, RedirectAttributes rttr)
-			throws Exception {
+	public String delete(BoardVO boardVO, @ModelAttribute("scri") SearchCriteria scri, RedirectAttributes rttr)	throws Exception {
 		logger.info("delete");
 		service.delete(boardVO.getBno());
 
@@ -153,9 +154,67 @@ public class BoardController {
 
 	}
 
+	//댓글 수정
+	//댓글 수정 GET
+		@RequestMapping(value="/replyUpdateView", method = RequestMethod.GET)
+		public String replyUpdateView(ReplyVO vo, SearchCriteria scri, Model model) throws Exception {
+			logger.info("reply Write");
+			
+			model.addAttribute("replyUpdate", replyService.selectReply(vo.getRno()));
+			model.addAttribute("scri", scri);
+			
+			return "board/replyUpdateView";
+		}
+		
+		//댓글 수정 POST
+		@RequestMapping(value="/replyUpdate", method = RequestMethod.POST)
+		public String replyUpdate(ReplyVO vo, SearchCriteria scri, RedirectAttributes rttr) throws Exception {
+			logger.info("reply update");
+			
+			replyService.updateReply(vo);
+			
+			rttr.addAttribute("bno", vo.getBno());
+			rttr.addAttribute("page", scri.getPage());
+			rttr.addAttribute("perPageNum", scri.getPerPageNum());
+			rttr.addAttribute("searchType", scri.getSearchType());
+			rttr.addAttribute("keyword", scri.getKeyword());
+			
+			return "redirect:/board/readView";
+		}
+	
+		//댓글 삭제 GET
+		@RequestMapping(value="/replyDeleteView", method = RequestMethod.GET)
+		public String replyDeleteView(ReplyVO vo, SearchCriteria scri, Model model,RedirectAttributes rttr) throws Exception {
+			logger.info("reply Write");
+			
+			model.addAttribute("replyDelete", replyService.selectReply(vo.getRno()));
+			model.addAttribute("scri", scri);
+			
+			
+
+			return "board/replyDeleteView";
+		}
+		
+		//댓글 삭제
+		@RequestMapping(value="/replyDelete", method = RequestMethod.POST)
+		public String replyDelete(ReplyVO vo, RedirectAttributes rttr,SearchCriteria scri) throws Exception {
+			logger.info("reply delete");
+			
+			replyService.deleteReply(vo);
+			
+			rttr.addAttribute("bno", vo.getBno());
+			rttr.addAttribute("page", scri.getPage());
+			rttr.addAttribute("perPageNum", scri.getPerPageNum());
+			rttr.addAttribute("searchType", scri.getSearchType());
+			rttr.addAttribute("keyword", scri.getKeyword());
+			
+			return "redirect:/board/readView";
+		}
+	
+	
+	
 	
 	 //써머노트 이미지 업로드
-	 
 	 @RequestMapping(value="/uploadSummernoteImageFile", produces = "application/json; charset=utf8")
 	 @ResponseBody public String uploadSummernoteImageFile(@RequestParam("file")
 	 MultipartFile multipartFile, HttpServletRequest request ) { JsonObject jsonObject = new JsonObject();
@@ -184,37 +243,8 @@ public class BoardController {
 	 String a = jsonObject.toString(); 
 	 return a; }
 	
+	 
+	 
 
-//	@PostMapping(value="/uploadSummernoteImageFile", produces = "application/json")
-//	@ResponseBody
-//	public String uploadSummernoteImageFile(@RequestParam("file") MultipartFile multipartFile) {
-//		
-//		JsonObject jsonObject = new JsonObject();
-//		
-//		String fileRoot = "C:\\upimg\\";	//저장될 외부 파일 경로
-//		String originalFileName = multipartFile.getOriginalFilename();	//오리지날 파일명
-//		String extension = originalFileName.substring(originalFileName.lastIndexOf("."));	//파일 확장자
-//				
-//		String savedFileName = UUID.randomUUID() + extension;	//저장될 파일 명
-//		
-//		File targetFile = new File(fileRoot + savedFileName);	
-//		
-//		try {
-//			InputStream fileStream = multipartFile.getInputStream();
-//			FileUtils.copyInputStreamToFile(fileStream, targetFile);	//파일 저장
-//			jsonObject.addProperty("url", "/summernoteImage/"+savedFileName);
-//			jsonObject.addProperty("responseCode", "success");
-//				
-//		} catch (IOException e) {
-//			FileUtils.deleteQuietly(targetFile);	//저장된 파일 삭제
-//			jsonObject.addProperty("responseCode", "error");
-//			e.printStackTrace();
-//		}
-//		
-//		String a = jsonObject.toString();
-//		
-//		
-//		return a;
-//	}
 
 }

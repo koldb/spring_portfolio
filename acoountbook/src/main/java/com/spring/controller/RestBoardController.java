@@ -65,20 +65,20 @@ public class RestBoardController {
 		return result;
 	}
 
-	// 댓글 삭제
-	@RequestMapping(value = "/deleteReply", method = { RequestMethod.GET, RequestMethod.POST })
-	public Map<String, Object> deleteReply(@RequestParam("rno") int rno) throws Exception {
-		Map<String, Object> result = new HashMap<>();
-		try {
-			replyService.deleteReply(rno);
-			result.put("status", "OK");
-
-		} catch (Exception e) {
-			e.printStackTrace();
-
-			result.put("status", "False");
-		}
-		return result;
-	}
+//	// 댓글 삭제
+//	@RequestMapping(value = "/deleteReply", method = { RequestMethod.GET, RequestMethod.POST })
+//	public Map<String, Object> deleteReply(@RequestParam("rno") int rno) throws Exception {
+//		Map<String, Object> result = new HashMap<>();
+//		try {
+//			replyService.deleteReply(rno);
+//			result.put("status", "OK");
+//
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//
+//			result.put("status", "False");
+//		}
+//		return result;
+//	}
 
 }

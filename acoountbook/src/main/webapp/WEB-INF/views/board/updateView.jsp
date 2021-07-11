@@ -14,6 +14,13 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 <meta charset="UTF-8">
 <title>게시판</title>
+<style type="text/css">
+li {
+	list-style: none;
+	float: left;
+	padding: 6px;
+}
+</style>
 </head>
 <script type="text/javascript">
 $(document).ready(function () {
@@ -60,35 +67,43 @@ function fn_valiChk(){
 
 	<div>
 		<section id="container">
-			<form name="updateForm" role="form" method="post"
-				action="/board/update">
-				<input type="hidden" name="bno" value="${update.bno}"
-					readonly="readonly" />
-				<table>
-					<tbody>
-						<tr>
-							<td><label for="title">제목</label><input type="text"
-								id="title" name="title" value="${update.title}" class="chk" title="제목을 입력하세요"/></td>
-						</tr>
-						<tr>
-							<td><label for="content">내용</label>
-							<textarea id="content" name="content" class="chk" title="내용을 입력하세요"><c:out
-										value="${update.content}" /></textarea></td>
-						</tr>
-						<tr>
-							<td><label for="writer">작성자</label><input type="text"
-								id="writer" name="writer" value="${update.writer}"
-								readonly="readonly" /></td>
-						</tr>
-						<tr>
-							<td><label for="regdate">작성날짜</label> <fmt:formatDate
-									value="${update.regdate}" pattern="yyyy-MM-dd" /></td>
-						</tr>
-					</tbody>
-				</table>
+			<form name="updateForm" role="form" method="post" action="/board/update" id="fform">
+				<input type="hidden" name="bno" value="${update.bno}" readonly="readonly" />
+							<div>
+							<div>
+							<label for="title">제목</label>
+							<input type="text" id="title" name="title" value="${update.title}" class="chk" title="제목을 입력하세요"/>
+							</div>
+							</div>
+							
+							<div>
+							<div>
+							<label for="content">내용</label>
+							<textarea id="content" name="content" class="chk" title="내용을 입력하세요">
+							<c:out value="${update.content}" />
+							</textarea>
+							</div>
+							</div>
+							
+							<div> 
+							<div>
+							<label for="writer">작성자</label>
+							<input type="text" id="writer" name="writer" value="${update.writer}" readonly="readonly"/>
+							</div>
+							</div>
+							
+							<div>
+							<div>
+							<label for="regdate">수정 날짜</label> 
+							<fmt:formatDate	value="${update.regdate}" pattern="yyyy-MM-dd" />
+							</div>
+							</div>
+							
 				<div>
-					<button type="submit" class="update_btn">저장</button>
-					<button type="button" class="cancel_btn">취소</button>
+				<div>
+					<button type="submit" class="update_btn btn btn-success">저장</button>
+					<button type="button" class="cancel_btn btn btn-danger">취소</button>
+				</div>
 				</div>
 			</form>
 		</section>

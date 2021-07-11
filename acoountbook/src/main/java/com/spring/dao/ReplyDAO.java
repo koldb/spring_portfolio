@@ -13,14 +13,15 @@ public interface ReplyDAO {
 	public int writeReply(ReplyVO vo) throws Exception;
 	
 	//댓글 수정
-	public int updateReply(ReplyVO vo) throws Exception;
+	public void updateReply(ReplyVO vo) throws Exception;
 	
 	//댓글 삭제
-	public int deleteReply(int rno) throws Exception;
+	public void deleteReply(ReplyVO vo) throws Exception;
 	
-	/*
-	 * //댓글 select public ReplyVO selectReply(int rno) throws Exception;
-	 */
+	
+	//선택된 댓글 조회
+	public ReplyVO selectReply(int rno) throws Exception;
+	 
 	
 	
 	

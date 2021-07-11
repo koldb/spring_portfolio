@@ -8,15 +8,12 @@
   <meta charset="UTF-8">
   <title>footer</title>
   <style>
-    p {
-     font-size:20px;
-      text-align:center;
-    }
         #footer {
         clear: both;
         padding: 5px;
         border: 0px solid #bcbcbc;
          background-color: lightblue;
+         text-align: center;
       }
     
   </style>

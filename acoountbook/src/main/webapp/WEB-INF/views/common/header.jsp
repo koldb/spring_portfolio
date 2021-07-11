@@ -5,6 +5,9 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <script type="text/javascript">
+			
+		
+
 	function joinmember() {
 		var popupX = (window.screen.width / 2)  - (450 / 2);
 		//&nbsp;만들 팝업창 좌우 크기의 1/2 만큼 보정값으로 빼주었음
@@ -24,7 +27,17 @@
 
 		window.open("${contextPath}/member/login","login",'status=no, height=450, width=450, left='+ popupX + ', top='+ popupY)
 	}
+	
+	function memberModifyViewpopup() {
+		var popupX = (window.screen.width / 2)  - (450 / 2);
+		//&nbsp;만들 팝업창 좌우 크기의 1/2 만큼 보정값으로 빼주었음
 
+		var popupY= (window.screen.height / 2) - (450 / 2);
+		//&nbsp;만들 팝업창 상하 크기의 1/2 만큼 보정값으로 빼주었음
+
+		window.open("${contextPath}/member/memberModifyView","memberModifyView",'status=no, height=450, width=450, left='+ popupX + ', top='+ popupY)
+	}
+	
 
 
 </script>
@@ -58,11 +71,11 @@
      </td> --%>
      
      <td>
-       <h1 style="text-align: center"><font size=30 >enjoy your account!!</font></h1>
+       <h1 style="text-align: center"><font size=30 >Enjoy Your Account!!</font></h1>
      <ul>
 	<li style="list-style: none;">
 		<c:if test="${member != null}">
-			<a href="/member/memberModifyView">${member.userId}님.</a>
+			<a href="javascript:memberModifyViewpopup()">${member.userId}님.</a>
 		</c:if>
 	</li>  
 	
@@ -73,10 +86,17 @@
 	</li>
 	
 	
-	<li style="list-style: none;">
+	<li >
 		<c:if test="${msg == false }">
-			<p style="color: red;">아이디와 비밀번호를 확인하세요</p>
+			<!-- <p style="color: red;">아이디와 비밀번호를 확인하세요</p> -->
+			<script type="text/javascript">
+			alert("아이디와 비밀번호를 확인하세요");
+			
+			</script>
+			
 		</c:if>
+		<%-- <c:if test="${msg == null }"></c:if> --%>
+		
 	</li>
 	
   
