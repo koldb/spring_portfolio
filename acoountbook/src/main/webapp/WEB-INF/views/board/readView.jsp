@@ -143,11 +143,11 @@ li {
 				<label for="title" class="col-sm-2 control-label">제목</label>
 				 <input	type="text" id="title" name="title" value="${read.title}"readonly="readonly" class="form-control" />
 			</div>
-			<div class="form-group">
-				<label for="content" class="col-sm-2 control-label">내용</label>
-				<textarea id="content" name="content" readonly="readonly"
-					class="form-control">${read.content }
-					<%-- <c:out value="${read.content}" escapeXml="false" ></c:out> --%></textarea>
+			<div class="form-group ">
+				 <label for="content" class="col-sm-2 control-label">내용</label>
+				<%-- <textarea id="content" name="content" readonly="readonly"
+					class="form-control">${read.content }</textarea> --%>
+					 <pre><c:out value="${read.content}" escapeXml="false" ></c:out></pre>
 			</div>
 			<div class="form-group">
 				<label for="writer" class="col-sm-2 control-label">작성자</label> <input
