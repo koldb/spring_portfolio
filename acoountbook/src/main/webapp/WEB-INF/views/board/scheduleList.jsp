@@ -268,11 +268,11 @@ textarea {
 				alert("시작일과 종료일을 확인해주세요.");
 				return;
 			}
-			
+			window.location = "/schedule/scheduleList?userId=" + $("${member.userId}").val();
 			$("#scheduleInsertForm").submit();
 		});
 		
-		/* $(document).on("click", ".scheduleInDiv > div > a", function() {
+		 $(document).on("click", ".scheduleInDiv > div > a", function() {
 			var name = $(this).attr("data-arrmore");
 			var state = $("#" + name).attr("class");
 			
@@ -311,9 +311,9 @@ textarea {
 			}
 			
 			readSchedule(params);
-		}); */
+		}); 
 		
-		/* $("#updateSchedule").on("click", function() {
+		 $("#updateSchedule").on("click", function() {
 			var params = {
 				num : $("#num_up").val(),
 				subject : $("#subject_up").val(),
@@ -327,7 +327,7 @@ textarea {
 		
 		$("#deleteSchedule").on("click", function() {
 			deleteSchedule();
-		});*/
+		});
 	});
 	
 	// 입력 폼에 자동으로 오늘 날짜 넣기
@@ -434,7 +434,12 @@ textarea {
 			str = "0" + mon;
 		}
 		
-		var param = year + "-" + str;
+		
+		var year = date.getFullYear().toString();
+			
+		
+		
+		var param = Number(year.substring(0, 4)) + "-" + str;
 		var userID = "${member.userId}";
 		console.log(userID);
 		
@@ -443,7 +448,8 @@ textarea {
 			writer : userID
 		}
 		
-		console.log(typeof params);
+		console.log("params"+ typeof params);
+		console.log("param"+ typeof param);
 		console.log(typeof userID);
 		
 		$.ajax({
@@ -479,24 +485,21 @@ textarea {
 					// arrMore : more 클릭했을 때 출력시킬 내용
 					
 					// DB에서 조회한 일정 시작일과 일정 종료일을 변수에 넣는다.
-					var startDay = new Date(val.startDate.substring(0, 6));
-					var endDay = new Date(val.endDate.substring(0, 6));
+					//var startDay = new Date(val.startDate.substring(0, 6));
+					//var startDay = new Date(val.startDate);
+					
+					var startDay = new Date(val.startDate.substring(0, 10));
+					var endDay = new Date(val.endDate.substring(0, 10));
 
 					
-					
 					console.log("타입 확인 : "+ typeof startDay);
-					console.log("넌 startDay " + startDay);
+					console.log("넌 startDay " + Number(startDay));
 					
 					console.log("인덱스 : " + idx);
 					console.log("val : " + val);
 					console.log("start val : " + typeof val.startDate);
-					console.log("start val num : " + val.startDate);
-					console.log("start val num : " + val.endDate);
-					
-					
-					
-
-					
+					console.log("start val num : " + val.startDate.substring(0, 8));
+					console.log("end val num : " + val.endDate);
 					
 					
 					// 만약, 일정 시작일이 지난달 이거나 일정 종료일이 다음달이면 이번달 시작일과 이번달 종료일로 변경한다. 
@@ -617,7 +620,7 @@ textarea {
 			},
 			success: function(data) {	    
 				if (data == 1) {
-					window.location = "/schedule/scheduleList?num=" + $("#num").val();
+					window.location = "/schedule/scheduleList?userId=" + $("${member.userId}").val();
 				}
 				else if (data != 1) {
 					alert("수정을 실패하였습니다.");
@@ -646,7 +649,7 @@ textarea {
 			},
 			success: function(data) {			     
 			    if (Number(data) == 1) {
-			    	window.location = "/schedule/scheduleList?num=" + $("#num").val();
+			    	window.location = "/schedule/scheduleList?userId=" + $("${member.userId}").val();
 			    } 
 			    else if (Number(data) != 1) {
 			    	alert("일정 삭제를 실패하였습니다.");
@@ -663,7 +666,7 @@ textarea {
 <body>
 	<div id="wrap">
 
-	<%-- 	<!-- Modal -->
+		<!-- Modal -->
 		<div class="modal fade" id="myModal" role="dialog">
 			<div class="modal-dialog">
 
@@ -758,7 +761,7 @@ textarea {
 				</div>
 
 			</div>
-		</div> --%>
+		</div> 
 
 		<!-- content 시작 -->
 		<div id="content">
@@ -766,6 +769,7 @@ textarea {
 			<div id="title">
 				<h3>개인 일정을 추가하거나 수정 할 수 있습니다.
 				</h3>
+				<h4 style="float:right"><a href="${contextPath}/board/list">목록으로</a></h4>
 			</div>
 
 			<div>

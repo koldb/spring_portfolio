@@ -26,33 +26,33 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		       writer
 		from po_sechedule
 		where writer = #{writer}
-		<!-- and (SUBSTR(TO_CHAR(startDate),0,5) = #{param} or SUBSTR(TO_CHAR(endDate),0,5) = #{param})
-		ORDER BY startDate ASC, endDate ASC -->
+		and (SUBSTR(TO_CHAR(TO_DATE(startDate, 'YYYY-MM-DD HH24:MI:SS'),'YYYY-MM-DD HH24:MI:SS'), 0, 7) = #{param} or SUBSTR(TO_CHAR(TO_DATE(endDate, 'YYYY-MM-DD HH24:MI:SS'),'YYYY-MM-DD HH24:MI:SS'),0,7) = #{param})
+		ORDER BY startDate ASC, endDate ASC
 	</select>
 	
 	<insert id="insertSchedule" parameterType="ScheduleVO">
 		INSERT into po_sechedule
-		VALUES(po_sechedule_seq.NEXTVAL, #{subject}, TO_DATE(#{startDate}, 'YYYY-MM-DD HH24:MI:SS'), TO_DATE(#{endDate}, 'YYYY-MM-DD HH24:MI:SS'), #{memo}, #{writer} )
+		VALUES(po_sechedule_seq.NEXTVAL, #{subject}, TO_CHAR(TO_DATE(#{startDate}, 'YYYY-MM-DD HH24:MI:SS'),'YYYY-MM-DD HH24:MI:SS'), TO_CHAR(TO_DATE(#{endDate}, 'YYYY-MM-DD HH24:MI:SS'),'YYYY-MM-DD HH24:MI:SS'), #{memo}, #{writer} )
 	</insert>
 	
-	<select id="readSchedule" parameterType="Map" resultType="ScheduleVO">
-		SELECT num, 
+	<select id="readSchedule"  parameterType="Map" resultType="ScheduleVO">
+	SELECT num, 
 		       subject,
 		       startDate,
 		       endDate,
 		       memo,
-		       writer,
+		       writer
 		FROM po_sechedule
 		WHERE num = #{param}
 	</select>
 	
-	<select id="updateSchedule" parameterType="Map">
+	<select id="updateSchedule" parameterType="Map" resultType="ScheduleVO">
 		UPDATE po_sechedule
 		SET subject = #{subject},
-			startDate = TO_DATE(#{startDate}, 'YYYY-MM-DD HH24:MI:SS'),
-			endDate = TO_DATE(#{endDate}, 'YYYY-MM-DD HH24:MI:SS')
-			memo = ${param}
-		WHERE num = #{param}
+			startDate = TO_CHAR(TO_DATE(#{startDate}, 'YYYY-MM-DD HH24:MI:SS'),'YYYY-MM-DD HH24:MI:SS'),
+			endDate = TO_CHAR(TO_DATE(#{endDate}, 'YYYY-MM-DD HH24:MI:SS'),'YYYY-MM-DD HH24:MI:SS'),
+			memo = #{memo}
+		WHERE num = #{num}
 	</select>
 	
 	<select id="deleteSchedule" parameterType="Map">

@@ -1,6 +1,8 @@
 package com.spring.controller;
 
 import java.net.InetAddress;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -70,10 +72,14 @@ public class ScheduleController {
 		 // tempEnd = tempEnd.substring(0, tempEnd.length()-2);
 		  result.get(i).setStartDate(tempStr); 
 		  result.get(i).setEndDate(tempEnd); 
-		  
+
 		  System.out.println("startdate :" +tempStr );
 		  System.out.println("enddate :" +tempEnd );
 		  
+//		  SimpleDateFormat fDate = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss"); //같은 형식으로 맞춰줌
+//          Date n = fDate.parse(tempStr);
+//		  System.out.println(n);
+          
 		  System.out.println(result);
 		  
 	  
@@ -100,7 +106,7 @@ public class ScheduleController {
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
-		return "redirect:/schedule/scheduleList";
+		return "redirect:/schedule/scheduleList?userId=" + vo.getWriter();
 	}
 	
 	@ResponseBody
@@ -116,8 +122,8 @@ public class ScheduleController {
 			// 날짜 뒤에 .0 없애기		
 			String tempStr = result.getStartDate();
 			String tempEnd = result.getEndDate();
-			tempStr = tempStr.substring(0, tempStr.length()-2);
-			tempEnd = tempEnd.substring(0, tempEnd.length()-2);
+			//tempStr = tempStr.substring(0, tempStr.length()-2);
+			//tempEnd = tempEnd.substring(0, tempEnd.length()-2);
 			result.setStartDate(tempStr);
 			result.setEndDate(tempEnd);
 			
@@ -136,6 +142,10 @@ public class ScheduleController {
 		
 		int result = 0;
 		params.put("memo", params.get("memo").replaceAll("\n", "<br>"));
+		params.put("startDate", params.get("startDate"));
+		params.put("endDate", params.get("endDate"));
+		params.put("num", params.get("num"));
+		
 		try {
 			result = service.updateSchedule(params);
 		} catch(Exception e) {
@@ -150,6 +160,8 @@ public class ScheduleController {
 		logger.info("deleteSchedule");
 		
 		int result = 0;
+		params.put("num", params.get("num"));
+		
 		try {
 			result = service.deleteSchedule(params);
 			System.out.println("==============================================================================result : " + result);
