@@ -11,6 +11,7 @@
   <typeAlias type="com.spring.vo.ReplyVO" alias="replyVO"/>
   <typeAlias type="com.spring.vo.MemberVO" alias="memberVO"/>
   <typeAlias type="com.spring.vo.ScheduleVO" alias="ScheduleVO"/>
+  <typeAlias type="com.spring.vo.AccountVO" alias="AccountVO"/>
   
   </typeAliases>
   

@@ -4,13 +4,16 @@ import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 import java.util.UUID;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletRequestWrapper;
+import javax.servlet.http.HttpSession;
 
 import org.apache.commons.io.FileUtils;
 import org.jsoup.Jsoup;
@@ -31,11 +34,15 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.servlet.support.RequestContextUtils;
 
+import com.google.gson.Gson;
 import com.google.gson.JsonObject;
+import com.spring.service.AccountService;
 import com.spring.service.BoardService;
 import com.spring.service.ReplyService;
+import com.spring.vo.AccountVO;
 import com.spring.vo.BoardVO;
 import com.spring.vo.Criteria;
+import com.spring.vo.MemberVO;
 import com.spring.vo.PageMaker;
 import com.spring.vo.ReplyVO;
 import com.spring.vo.SearchCriteria;
@@ -51,6 +58,9 @@ public class BoardController {
 
 	@Inject
 	ReplyService replyService;
+	
+	@Inject
+	AccountService accountService;
 
 	// 게시글 작성 뷰
 	@RequestMapping(value = "/board/writeView", method = RequestMethod.GET)
@@ -244,7 +254,80 @@ public class BoardController {
 	 return a; }
 	
 	 
-	 
+		
+	   //내역 리스트
+	   @RequestMapping(value = "/householdView", method = RequestMethod.GET)
+	   public String gethouseholdView(AccountVO vo, Model model, HttpServletRequest request) throws Exception {
+			logger.info("householdView");
+			
+			model.addAttribute("accList", accountService.accRead(vo));
+			model.addAttribute("userId", vo.getUserId());
+			
+			
+			 List<AccountVO> accList = accountService.accRead(vo);
+			 model.addAttribute("accList", accList);
+			
+	   return "board/householdView";
+		
+	   }
 
+		
+		  //내역 조회
+		  
+		  @RequestMapping(value = "/householdView", method = RequestMethod.POST) public
+		  String posthouseholdView(Model model, AccountVO vo) throws
+		  Exception{ logger.info("post householdView");
+		  
+		  List<AccountVO> accList = accountService.accRead(vo);
+		  model.addAttribute("accList", accList); 
+		  System.out.println(model);
+		  
+		  return "board/householdView"; }
+		 
+	   
+	   
+		
+		
+	    //내역 입력 뷰
+		@RequestMapping(value="/householdWrite", method = RequestMethod.GET)
+		public String gethouseholdWrite(MemberVO vo, Model model) throws Exception{
+			logger.info("get householdWrite");
+			
+			try {
+				model.addAttribute("userId", vo.getUserId());
+			} catch(Exception e) {
+				e.printStackTrace();
+			}
+			
+			return "board/householdWrite";
+		}
+		
+		//내역 입력
+		@RequestMapping(value="/householdWrite", method = RequestMethod.POST)
+		public String posthouseholdWrite(AccountVO vo, Model model) throws Exception{
+			logger.info("post householdWrite");
+			vo.setAccDate(vo.getAccDate());
+			accountService.accInsert(vo);
+			
+			model.addAttribute("userId", vo.getUserId());
+			
+			return "board/householdWrite";
+				}
+		
+		//내역 삭제
+		@RequestMapping(value="/accDelete", method = RequestMethod.GET)
+		public String accDelete(AccountVO vo) throws Exception{
+			logger.info("accDelete");
+			
+			System.out.println("accnum"+vo.getAccNum());
+			
+			accountService.accDelete(vo.getAccNum());
+			
+			return "board/householdView";
+		}
+		
+		
+		
+		
 
 }

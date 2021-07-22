@@ -49,8 +49,8 @@
 	<a href="${contextPath}/news/newsList" class="no-underline">뉴스게시판</a><br />
 	<a href="${contextPath}/schedule/scheduleList?userId=${member.userId}" class="no-underline" >일정 관리</a><br />
 	<hr />
-	<a href="#" class="no-underline">내역 입력</a><br />
-	<a href="#" class="no-underline">내역 조회</a><br />
+	<a href="${contextPath}/board/householdWrite?userId=${member.userId}" class="no-underline">내역 입력</a><br />
+	<a href="${contextPath}/board/householdView?userId=${member.userId}" class="no-underline">내역 조회</a><br />
 	<a href="#" class="no-underline">수익/비용 결산</a><br />
 	<a href="#" class="no-underline">저축/지출 분석</a><br />
 	<a href="#" class="no-underline">신용카드 결산</a><br />

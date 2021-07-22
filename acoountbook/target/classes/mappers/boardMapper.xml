@@ -97,7 +97,71 @@
 	</update>
 
 
+	<!-- 가계부 파트 -->
+
+	<!-- 카테고리 읽어오기 -->	
+<!-- 	<select id="accCateRead" resultType="AccountVO">
+		select accCategory 
+		from po_account 
+		where accNum = #{accNum} and accUser = #{userId}
+	</select> -->
+	
+	
+	<!-- 내역 입력 -->
+	<insert id="accInsert">
+		insert into po_account(
+			   accNum,
+			   userId,
+			   accDiv,
+			   accCategory,
+			   accDate,
+			   accComment,
+			   accAmount)
+		 values (
+		 	   po_accCategory_seq.nextval,
+		 	   #{userId},
+		 	   #{accDiv},
+		 	   #{accCategory},
+		 	  	TO_CHAR(TO_DATE(#{accDate}, 'YYYY-MM-DD'),'YYYY-MM-DD'),
+		 	   #{accComment},
+		 	   #{accAmount}
+		 )
+	</insert>
+
+	<!-- 내역 읽어오기 -->
+	<select id="accRead" parameterType="AccountVO" resultType="AccountVO">
+		select 
+			   accNum,   
+			   accDiv,
+			   accCategory,
+			   accDate,
+			   accComment,
+			   accAmount 
+		from po_account
+		where userId = #{userId} <!-- and accDate = #{accDate} -->
+		order by accDate asc
+	</select>
+
+	
 
 
+	<!-- 내역 삭제 -->
+	<delete id="accDelete" parameterType="int">
+	delete 
+	from po_account
+	where accNum = #{accNum}
+	</delete>
+
+	<!-- 내역 수정 -->
+	<update id="accUpdate" parameterType="AccountVO">
+		update po_account 
+		set accDiv = #{accDiv},
+			accCategory = #{accCategory},
+			accDate = #{accDate},
+			accComment = #{accComment},
+			accAmount = #{accAmount}
+		where userId = #{userId} and accNum = #{accNum}
+	</update>
+	
 
 </mapper>

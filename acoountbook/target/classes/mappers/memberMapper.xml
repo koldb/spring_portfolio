@@ -8,7 +8,6 @@
 
 	<!-- 회원가입 -->
 	<insert id="register">
-
 		insert into po_member(userId,
 		userPass,
 		userName,
